@@ -1,0 +1,20 @@
+# Base image
+FROM node:14
+
+# Install Expo CLI
+RUN npm install -g expo-cli
+
+# Set working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install app dependencies
+RUN npm install
+
+# Copy app files
+COPY . .
+
+# Start Expo server
+CMD ["npm", "start"]
